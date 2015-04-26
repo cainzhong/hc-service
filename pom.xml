@@ -72,6 +72,12 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 		</dependency>
+		<!-- it needs jdk7, not jre7 -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.12.6</version>
+		</dependency>
 		<dependency>
 			<groupId>com.online.shopping</groupId>
 			<artifactId>orange-repository</artifactId>
