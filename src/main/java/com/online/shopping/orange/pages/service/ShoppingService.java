@@ -9,7 +9,7 @@ import com.online.shopping.orange.domain.OrderedItem;
 import com.online.shopping.orange.repository.OrangeRepository;
 
 @Service
-public class ShoppingCartService {
+public class ShoppingService {
 	@Autowired
 	private OrangeRepository orangeRepository;
 
