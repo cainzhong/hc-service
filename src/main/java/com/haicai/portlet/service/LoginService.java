@@ -1,5 +1,9 @@
 package com.haicai.portlet.service;
 
+/**
+ * @author Cain
+ *
+ */
 public interface LoginService {
 
 	/**

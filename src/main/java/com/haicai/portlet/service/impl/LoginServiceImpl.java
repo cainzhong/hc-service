@@ -7,6 +7,10 @@ import com.haicai.domain.User;
 import com.haicai.portlet.repository.PortletRepository;
 import com.haicai.portlet.service.LoginService;
 
+/**
+ * @author Cain
+ *
+ */
 @Service
 public class LoginServiceImpl implements LoginService {
 	@Autowired
