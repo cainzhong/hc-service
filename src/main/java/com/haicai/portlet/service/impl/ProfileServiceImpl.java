@@ -39,5 +39,4 @@ public class ProfileServiceImpl implements ProfileService {
 		map.put("awardsList", awardsList);
 		return map;
 	}
-
 }
