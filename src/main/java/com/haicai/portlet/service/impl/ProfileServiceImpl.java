@@ -28,7 +28,7 @@ public class ProfileServiceImpl implements ProfileService {
 	@Transactional
 	public Map<String, Object> findIndividualProfileInfoForUser(String username) {
 		User user = this.portletRepository.getUserByUserName(username);
-		List<Contact> contactList = this.portletRepository.getContactInfoForUser(user,null);
+		List<Contact> contactList = this.portletRepository.getContactInfoForUser(user,Status.ACTIVE);
 		List<PersonalHistory> personalHistories = this.portletRepository.getPersonalHistoryForUser(user);
 		List<Awards> awardsList = this.portletRepository.getAwardsForUser(user);
 		
