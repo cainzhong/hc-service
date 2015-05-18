@@ -9,7 +9,7 @@ import com.haicai.domain.type.Status;
 
 /**
  * This is a common service.
- * 
+ *
  * @author Cain
  *
  */
@@ -21,7 +21,7 @@ public interface PortletService {
 	 * @return
 	 */
 	User findUserByUserName(String username);
-	
+
 	/**
 	 * Find contact info for a user.
 	 *
@@ -30,7 +30,7 @@ public interface PortletService {
 	 * @return
 	 */
 	List<Contact> findContactInfoForUser(User user,Status status);
-	
+
 	/**
 	 * Find a specific and active contact info for a user.
 	 *
@@ -40,7 +40,7 @@ public interface PortletService {
 	 * @return
 	 */
 	Contact findSpecificActiveContactInfoForUser(User user, ContactType contactType, String otherDdescription);
-	
+
 	/**
 	 * Add contact info for a user.
 	 *
@@ -49,7 +49,15 @@ public interface PortletService {
 	 * @return
 	 */
 	boolean addContactForUser(User user, Contact contact);
-	
+
+	/**
+	 * Update a user.
+	 *
+	 * @param user
+	 * @return
+	 */
+	boolean updateUser(User user);
+
 	/**
 	 * Update contact info for a user.
 	 *

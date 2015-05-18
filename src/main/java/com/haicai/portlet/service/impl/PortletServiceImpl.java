@@ -18,7 +18,7 @@ import com.haicai.portlet.service.PortletService;
  */
 @Repository
 public class PortletServiceImpl implements PortletService{
-	
+
 	@Autowired
 	private PortletRepository portletRepository;
 
@@ -29,7 +29,7 @@ public class PortletServiceImpl implements PortletService{
 	public List<Contact> findContactInfoForUser(User user, Status status) {
 		return this.portletRepository.getContactInfoForUser(user, status);
 	}
-	
+
 	public Contact findSpecificActiveContactInfoForUser(User user, ContactType contactType, String otherDdescription) {
 		return this.portletRepository.getSpecificActiveContactInfoForUser(user, contactType, otherDdescription);
 	}
@@ -37,7 +37,11 @@ public class PortletServiceImpl implements PortletService{
 	public boolean addContactForUser(User user, Contact contact) {
 		return this.portletRepository.createContactForUser(user, contact);
 	}
-	
+
+	public boolean updateUser(User user){
+		return this.portletRepository.updateUser(user);
+	}
+
 	public boolean updateContactForUser(User user,Contact contact){
 		return this.portletRepository.updateContactForUser(user, contact);
 	}
