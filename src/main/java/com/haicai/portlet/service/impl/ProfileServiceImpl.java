@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.haicai.domain.Awards;
+import com.haicai.domain.Award;
 import com.haicai.domain.Contact;
 import com.haicai.domain.PersonalHistory;
 import com.haicai.domain.User;
@@ -28,9 +28,9 @@ public class ProfileServiceImpl implements ProfileService {
 	@Transactional
 	public Map<String, Object> findIndividualProfileInfoForUser(String username) {
 		User user = this.portletRepository.getUserByUserName(username);
-		List<Contact> contactList = this.portletRepository.getContactInfoForUser(user,Status.ACTIVE);
-		List<PersonalHistory> personalHistories = this.portletRepository.getPersonalHistoryForUser(user);
-		List<Awards> awardsList = this.portletRepository.getAwardsForUser(user);
+		List<Contact> contactList = this.portletRepository.getContacts(user,Status.ACTIVE);
+		List<PersonalHistory> personalHistories = this.portletRepository.getPersonalHistories(user);
+		List<Award> awardsList = this.portletRepository.getAward(user);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("user", user);
