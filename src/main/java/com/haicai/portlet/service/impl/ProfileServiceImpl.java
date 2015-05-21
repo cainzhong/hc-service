@@ -28,15 +28,27 @@ public class ProfileServiceImpl implements ProfileService {
 	@Transactional
 	public Map<String, Object> findIndividualProfileInfoForUser(String username) {
 		User user = this.portletRepository.getUserByUserName(username);
-		List<Contact> contactList = this.portletRepository.getContacts(user,Status.ACTIVE);
+		List<Contact> contactList = this.portletRepository.getContacts(user, Status.ACTIVE);
 		List<PersonalHistory> personalHistories = this.portletRepository.getPersonalHistories(user);
-		List<Award> awardsList = this.portletRepository.getAward(user);
-		
+		List<Award> awardsList = this.portletRepository.getAwards(user);
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("user", user);
 		map.put("contactList", contactList);
 		map.put("personalHistories", personalHistories);
 		map.put("awardsList", awardsList);
 		return map;
+	}
+
+	public boolean disableContact(Contact contact) {
+		return this.portletRepository.disableContact(contact);
+	}
+
+	public PersonalHistory findPersonalHistory(int personalHistoryId) {
+		return this.portletRepository.getPersonalHistory(personalHistoryId);
+	}
+
+	public Award findAward(int awardId) {
+		return this.portletRepository.getAward(awardId);
 	}
 }
