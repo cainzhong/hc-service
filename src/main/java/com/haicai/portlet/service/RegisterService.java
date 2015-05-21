@@ -1,16 +1,29 @@
 package com.haicai.portlet.service;
 
-import com.haicai.domain.type.ContactType;
-import com.haicai.domain.type.Sex;
+import com.haicai.domain.Contact;
+import com.haicai.domain.User;
 
 /**
- * @author Cain
- *
- */
-public interface RegisterService {
-	/**
-	 * 
-	 * @return
-	 */
-	boolean registerUser(String username,String realName,String enlishName,Sex sex,String password,String emial,String telephone,ContactType contactType, String otherContact);
+* @author Jason
+*
+*/
+public interface RegisterService{
+
+     /**
+      * Create user in register page
+      *
+       * @param user
+      * @return
+      */
+     boolean createUser(User user);
+
+     /**
+      * Create contact for user in register page
+      *
+       * @param user
+      * @param contact
+      * @return
+      */
+     boolean createContactForUser(User user,Contact contact);
+
 }
