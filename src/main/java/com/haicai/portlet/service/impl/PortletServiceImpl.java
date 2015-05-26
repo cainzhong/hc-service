@@ -166,6 +166,9 @@ public class PortletServiceImpl implements PortletService, UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
 		User user = this.portletRepository.getUserByUserName(username);
+		if(user==null){
+			return null;
+		}
 		UserDetails userDetails=new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), true, true, true, true, this.getAuthorities(user));
 		return userDetails;
 	}

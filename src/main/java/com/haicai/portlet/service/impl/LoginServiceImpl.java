@@ -16,11 +16,12 @@ public class LoginServiceImpl implements LoginService {
 	@Autowired
 	private PortletRepository portletRepository;
 
+	@Override
 	public boolean hasMatchedLoginUser(String username, String password) {
 		{
 			User user = this.portletRepository.getUserByUserName(username);
 
-			if (user.getPassword().equals(password)) {
+			if (user != null && user.getPassword().equals(password)) {
 				return true;
 			} else {
 				return false;
