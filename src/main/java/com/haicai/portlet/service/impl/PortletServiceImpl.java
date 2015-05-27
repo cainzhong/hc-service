@@ -56,7 +56,7 @@ public class PortletServiceImpl implements PortletService, UserDetailsService {
 	}
 
 	@Override
-	public boolean updateUser(String username, String realName, String englishName, String password, Sex sex, String idNumber, IdNumberType idNumberType, String currentCountry, String currentCity) {
+	public boolean updateUser(String username, String realName, String englishName, String password, Sex sex, String idNumber, IdNumberType idNumberType, String currentCountry, String currentCity, byte[] portrait) {
 		User user = this.portletRepository.getUserByUserName(username);
 		user.setRealName(realName);
 		user.setEnglishName(englishName);

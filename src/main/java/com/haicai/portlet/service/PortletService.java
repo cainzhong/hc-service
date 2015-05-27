@@ -37,8 +37,8 @@ public interface PortletService {
 	boolean createUser(String username,String realName,String englishName,String password,Sex sex,String idNumber,IdNumberType idNumberType,String currentCountry,String currentCity);
 
 	/**
-	 * Update a user.
-	 *
+	 * Update a user
+	 * 
 	 * @param username
 	 * @param realName
 	 * @param englishName
@@ -48,9 +48,10 @@ public interface PortletService {
 	 * @param idNumberType
 	 * @param currentCountry
 	 * @param currentCity
+	 * @param portrait
 	 * @return
 	 */
-	boolean updateUser(String username,String realName,String englishName,String password,Sex sex,String idNumber,IdNumberType idNumberType,String currentCountry,String currentCity);
+	boolean updateUser(String username,String realName,String englishName,String password,Sex sex,String idNumber,IdNumberType idNumberType,String currentCountry,String currentCity, byte[] portrait);
 
 	/**
 	 * Create a contact info for a user.
