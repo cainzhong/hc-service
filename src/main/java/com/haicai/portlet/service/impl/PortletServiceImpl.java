@@ -1,5 +1,6 @@
 package com.haicai.portlet.service.impl;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,8 +34,10 @@ import com.haicai.portlet.service.PortletService;
  *
  */
 @Repository
-public class PortletServiceImpl implements PortletService, UserDetailsService {
+public class PortletServiceImpl implements PortletService, UserDetailsService,Serializable {
 
+	private static final long serialVersionUID = 529261373480172282L;
+	
 	@Autowired
 	private PortletRepository portletRepository;
 
