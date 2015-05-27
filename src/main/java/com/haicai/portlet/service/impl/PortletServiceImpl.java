@@ -70,6 +70,7 @@ public class PortletServiceImpl implements PortletService, UserDetailsService,Se
 		user.setCurrentCountry(currentCountry);
 		user.setCurrentCity(currentCity);
 		user.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+		user.setPortrait(portrait);
 		return this.portletRepository.updateUser(user);
 	}
 
