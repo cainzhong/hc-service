@@ -14,29 +14,29 @@ import com.haicai.domain.PersonalHistory;
 import com.haicai.domain.User;
 import com.haicai.domain.type.Status;
 import com.haicai.portlet.repository.PortletRepository;
-import com.haicai.portlet.service.ProfileService;
+import com.haicai.portlet.service.IndividualService;
 
 /**
  * @author Cain
  *
  */
 @Service
-public class ProfileServiceImpl implements ProfileService {
+public class IndividualServiceImpl implements IndividualService {
 	@Autowired
 	private PortletRepository portletRepository;
 
 	@Transactional
 	public Map<String, Object> findIndividualProfileInfoForUser(String username) {
 		User user = this.portletRepository.getUserByUserName(username);
-		List<Contact> contactList = this.portletRepository.getContacts(user, Status.ACTIVE);
+		List<Contact> contacts = this.portletRepository.getContacts(user, Status.ACTIVE);
 		List<PersonalHistory> personalHistories = this.portletRepository.getPersonalHistories(user);
-		List<Award> awardsList = this.portletRepository.getAwards(user);
+		List<Award> awards = this.portletRepository.getAwards(user);
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("user", user);
-		map.put("contactList", contactList);
+		map.put("contacts", contacts);
 		map.put("personalHistories", personalHistories);
-		map.put("awardsList", awardsList);
+		map.put("awards", awards);
 		return map;
 	}
 

@@ -101,10 +101,10 @@ public class PortletServiceImpl implements PortletService, UserDetailsService,Se
 	}
 
 	@Override
-	public boolean updatePersonalHistory(int personalHistoryId, String university, UniversityDegree universityDegree, String major, String graduationYear) {
+	public boolean updatePersonalHistory(int personalHistoryId, String university, String universityDegree, String major, String graduationYear) {
 		PersonalHistory personalHistory = this.portletRepository.getPersonalHistory(personalHistoryId);
 		personalHistory.setUniversity(university);
-		personalHistory.setUniversityDegree(universityDegree);
+		personalHistory.setUniversityDegree(UniversityDegree.getUniversityDegree(universityDegree));
 		personalHistory.setMajor(major);
 		personalHistory.setGraduationYear(graduationYear);
 		personalHistory.setUpdateTime(new Timestamp(System.currentTimeMillis()));
@@ -124,9 +124,9 @@ public class PortletServiceImpl implements PortletService, UserDetailsService,Se
 	}
 
 	@Override
-	public boolean updateAward(int awardId, AwardType type, String description, String referrer, String other) {
+	public boolean updateAward(int awardId, String type, String description, String referrer, String other) {
 		Award award = this.portletRepository.getAward(awardId);
-		award.setType(type);
+		award.setType(AwardType.getAwardType(type));
 		award.setDescription(description);
 		award.setReferrer(referrer);
 		award.setOther(other);

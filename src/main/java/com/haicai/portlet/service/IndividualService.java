@@ -13,7 +13,7 @@ import com.haicai.domain.User;
  * @author Cain
  *
  */
-public interface ProfileService {
+public interface IndividualService {
 	/**
 	 * Find User info, Contact info, Personal History and Awards for user.
 	 *

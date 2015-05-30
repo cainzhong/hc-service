@@ -86,7 +86,7 @@ public interface PortletService {
 	 * @param graduationYear
 	 * @return
 	 */
-	boolean updatePersonalHistory( int personalHistoryId,String university,UniversityDegree universityDegree,String major,String graduationYear);
+	boolean updatePersonalHistory( int personalHistoryId,String university,String universityDegree,String major,String graduationYear);
 
 	/**
 	 * Create a award for a user.
@@ -110,7 +110,7 @@ public interface PortletService {
 	 * @param other
 	 * @return
 	 */
-	boolean updateAward(int awardId,AwardType type, String description,String referrer,String other);
+	boolean updateAward(int awardId,String type, String description,String referrer,String other);
 
 	/**
 	 * Find a user info through user name.
