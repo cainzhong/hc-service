@@ -89,10 +89,10 @@ public class PortletServiceImpl implements PortletService, UserDetailsService,Se
 	}
 
 	@Override
-	public boolean createPersonalHistory(User user, String university, UniversityDegree universityDegree, String major, String graduationYear) {
+	public boolean createPersonalHistory(User user, String university, String universityDegree, String major, String graduationYear) {
 		PersonalHistory personalHistory = new PersonalHistory();
 		personalHistory.setUniversity(university);
-		personalHistory.setUniversityDegree(universityDegree);
+		personalHistory.setUniversityDegree(UniversityDegree.getUniversityDegree(universityDegree));
 		personalHistory.setMajor(major);
 		personalHistory.setGraduationYear(graduationYear);
 		personalHistory.setCreateTime(new Timestamp(System.currentTimeMillis()));

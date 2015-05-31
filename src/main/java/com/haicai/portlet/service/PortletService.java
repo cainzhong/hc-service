@@ -74,7 +74,7 @@ public interface PortletService {
 	 * @param graduationYear
 	 * @return
 	 */
-	boolean createPersonalHistory(User user, String university,UniversityDegree universityDegree,String major,String graduationYear);
+	boolean createPersonalHistory(User user, String university,String universityDegree,String major,String graduationYear);
 
 	/**
 	 * Update personal history for a user.
