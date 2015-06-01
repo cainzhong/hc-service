@@ -37,7 +37,7 @@ import com.haicai.portlet.service.PortletService;
 public class PortletServiceImpl implements PortletService, UserDetailsService,Serializable {
 
 	private static final long serialVersionUID = 529261373480172282L;
-	
+
 	@Autowired
 	private PortletRepository portletRepository;
 
@@ -112,9 +112,9 @@ public class PortletServiceImpl implements PortletService, UserDetailsService,Se
 	}
 
 	@Override
-	public boolean createAward(User user, AwardType type, String description, String referrer, String other) {
+	public boolean createAward(User user, String type, String description, String referrer, String other) {
 		Award award = new Award();
-		award.setType(type);
+		award.setType(AwardType.getAwardType(type));
 		award.setDescription(description);
 		award.setReferrer(referrer);
 		award.setOther(other);

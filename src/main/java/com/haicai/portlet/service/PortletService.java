@@ -6,12 +6,10 @@ import com.haicai.domain.Award;
 import com.haicai.domain.Contact;
 import com.haicai.domain.PersonalHistory;
 import com.haicai.domain.User;
-import com.haicai.domain.type.AwardType;
 import com.haicai.domain.type.ContactType;
 import com.haicai.domain.type.IdNumberType;
 import com.haicai.domain.type.Sex;
 import com.haicai.domain.type.Status;
-import com.haicai.domain.type.UniversityDegree;
 
 /**
  * This is a common service.
@@ -38,7 +36,7 @@ public interface PortletService {
 
 	/**
 	 * Update a user
-	 * 
+	 *
 	 * @param username
 	 * @param realName
 	 * @param englishName
@@ -98,7 +96,7 @@ public interface PortletService {
 	 * @param other
 	 * @return
 	 */
-	boolean createAward(User user, AwardType type, String description,String referrer,String other);
+	boolean createAward(User user, String type, String description,String referrer,String other);
 
 	/**
 	 * Update award for a user.
