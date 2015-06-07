@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.haicai.domain.Award;
 import com.haicai.domain.Contact;
+import com.haicai.domain.JobAsked;
 import com.haicai.domain.PersonalHistory;
 import com.haicai.domain.User;
 
@@ -45,4 +46,12 @@ public interface IndividualService {
 	 * @return
 	 */
 	Award findAward(int awardId);
+	
+	/**
+	 * Find a list of job asked for a user.
+	 *
+	 * @param user
+	 * @return
+	 */
+	List<JobAsked> findJobAskeds(User user);
 }

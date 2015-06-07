@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,6 +23,7 @@ import org.springframework.stereotype.Repository;
 
 import com.haicai.domain.Award;
 import com.haicai.domain.Contact;
+import com.haicai.domain.JobAsked;
 import com.haicai.domain.PersonalHistory;
 import com.haicai.domain.User;
 import com.haicai.domain.UserRole;
@@ -26,15 +33,16 @@ import com.haicai.domain.type.IdNumberType;
 import com.haicai.domain.type.Sex;
 import com.haicai.domain.type.Status;
 import com.haicai.domain.type.UniversityDegree;
+import com.haicai.domain.type.WorkTimeType;
 import com.haicai.portlet.repository.PortletRepository;
 import com.haicai.portlet.service.PortletService;
 
 /**
  * @author Cain
- *
+ * 
  */
 @Repository
-public class PortletServiceImpl implements PortletService, UserDetailsService,Serializable {
+public class PortletServiceImpl implements PortletService, UserDetailsService, Serializable {
 
 	private static final long serialVersionUID = 529261373480172282L;
 
@@ -89,7 +97,7 @@ public class PortletServiceImpl implements PortletService, UserDetailsService,Se
 	}
 
 	@Override
-	public boolean createPersonalHistory(User user, String university, String universityDegree, String major, String graduationYear) {
+	public boolean createPersonalHistory(User user, String university, String universityDegree, String major, Object graduationYear) {
 		PersonalHistory personalHistory = new PersonalHistory();
 		personalHistory.setUniversity(university);
 		personalHistory.setUniversityDegree(UniversityDegree.getUniversityDegree(universityDegree));
@@ -164,25 +172,43 @@ public class PortletServiceImpl implements PortletService, UserDetailsService,Se
 		return this.portletRepository.getAwards(user);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.springframework.security.core.userdetails.UserDetailsService#loadUserByUsername(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.springframework.security.core.userdetails.UserDetailsService#
+	 * loadUserByUsername(java.lang.String)
 	 */
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
 		User user = this.portletRepository.getUserByUserName(username);
-		if(user==null){
+		if (user == null) {
 			return null;
 		}
-		UserDetails userDetails=new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), true, true, true, true, this.getAuthorities(user));
+		UserDetails userDetails = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), true, true, true, true, this.getAuthorities(user));
 		return userDetails;
 	}
 
-	private Collection<GrantedAuthority> getAuthorities(User user){
+	private Collection<GrantedAuthority> getAuthorities(User user) {
 		List<GrantedAuthority> authList = new ArrayList<GrantedAuthority>();
 		List<UserRole> userRoles = this.portletRepository.getUserRolesByUser(user);
-		for(UserRole userRole:userRoles){
+		for (UserRole userRole : userRoles) {
 			authList.add(new GrantedAuthorityImpl(userRole.getRole()));
 		}
 		return authList;
+	}
+
+	@Override
+	public boolean createJobAsked(User user, String proField, String title, String officeArea, WorkTimeType workTimeType, String expectSalary, String requirement) {
+		JobAsked jobAsked = new JobAsked();
+		jobAsked.setProField(proField);
+		jobAsked.setTitle(title);
+		jobAsked.setOfficeArea(officeArea);
+		jobAsked.setWorkTimeType(workTimeType);
+		jobAsked.setExpectSalary(expectSalary);
+		jobAsked.setRequirement(requirement);
+		jobAsked.setCreateTime(new Timestamp(System.currentTimeMillis()));
+		jobAsked.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+		jobAsked.setUser(user);
+		return this.portletRepository.createJobAsked(user, jobAsked);
 	}
 }

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.haicai.domain.Award;
 import com.haicai.domain.Contact;
+import com.haicai.domain.JobAsked;
 import com.haicai.domain.PersonalHistory;
 import com.haicai.domain.User;
 import com.haicai.domain.type.Status;
@@ -18,7 +19,7 @@ import com.haicai.portlet.service.IndividualService;
 
 /**
  * @author Cain
- *
+ * 
  */
 @Service
 public class IndividualServiceImpl implements IndividualService {
@@ -50,5 +51,10 @@ public class IndividualServiceImpl implements IndividualService {
 
 	public Award findAward(int awardId) {
 		return this.portletRepository.getAward(awardId);
+	}
+
+	@Override
+	public List<JobAsked> findJobAskeds(User user) {
+		return this.portletRepository.getJobAskeds(user);
 	}
 }
